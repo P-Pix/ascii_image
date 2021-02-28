@@ -28,7 +28,7 @@ Sprite load_sprite(Texture IMAGE)
     return SPRITE;
 }
 
-Color color_one_pixel(Texture IMAGE)
+int color_one_pixel(Texture IMAGE)
 {
     return 0;
 }
@@ -40,17 +40,23 @@ int main()
 
     Texture image_loaded;
     Sprite sprite_loaded;
+    /**
     RenderWindow WINDOW(VideoMode(1080, 720), "My window");
 
     WINDOW.setFramerateLimit(60);
+    **/
 
     image_loaded = open_image(NAME_IMAGE);
-    //sprite_loaded = load_sprite(image_loaded);
+    /**
+    sprite_loaded = load_sprite(image_loaded);
+    **/
 
     for(int x = 0; x < 3; x ++)
     {
         cout << "le " << x << " est '" << ASCII[x] << "' " << endl;
     }
+
+    /**
     while(WINDOW.isOpen())
     {
         Event event;
@@ -66,5 +72,6 @@ int main()
         WINDOW.draw(sprite_loaded);
         WINDOW.display();
     }
+    **/
     return 0;
 }
