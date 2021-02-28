@@ -28,6 +28,11 @@ Sprite load_sprite(Texture IMAGE)
     return SPRITE;
 }
 
+Color color_one_pixel(Texture IMAGE)
+{
+    return 0;
+}
+
 int main()
 {
     const char *NAME_IMAGE = "image/coeur.jpg";
