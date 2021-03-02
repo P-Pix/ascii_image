@@ -28,10 +28,13 @@ Sprite load_sprite(Texture IMAGE)
     return SPRITE;
 }
 
+/**
 int color_one_pixel(Texture IMAGE)
 {
+    Color::Color(IMAGE);
     return 0;
 }
+**/
 
 int main()
 {
@@ -47,6 +50,7 @@ int main()
     **/
 
     image_loaded = open_image(NAME_IMAGE);
+    //color_one_pixel(image_loaded);
     /**
     sprite_loaded = load_sprite(image_loaded);
     **/
