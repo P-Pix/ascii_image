@@ -13,14 +13,14 @@
 using namespace std;
 using namespace sf;
 
-sf::Texture open_image(const char *NAME_IMAGE)
+sf::Image open_image(const char *NAME_IMAGE)
 {
-    sf::Texture IMAGE_LOAD;
-    if(!IMAGE_LOAD.loadFromFile(NAME_IMAGE))
+    sf::Image IMAGE;
+    if(!IMAGE.loadFromFile(NAME_IMAGE))
     {
         cout << "error" << endl;
     }
-    return IMAGE_LOAD;
+    return IMAGE;
 }
 
 void right_in_txt(const char *ASCII_SIGNE, ofstream FICHIER, bool END_LIGNE)
@@ -35,49 +35,52 @@ void right_in_txt(const char *ASCII_SIGNE, ofstream FICHIER, bool END_LIGNE)
     }
 }
 
-int receve_width_image(const char *NAME_IMAGE)
+//recherche actuelle = obtenir le size de l'image
+
+unsigned int receve_width_image(Image IMAGE)
 {
-    int WIDTH;
-    WIDTH = 10; //NAME_IMAGE.getSize();
-    cout << WIDTH << endl;
+    unsigned int WIDTH;
+    WIDTH = 10;
+    sf::Vector2u Vector;
+    Vector = Image::getSize();
+    Vector(IMAGE);
     return WIDTH;
 }
 
-int receve_height_image(Texture IMAGE)
+unsigned int receve_height_image(Image IMAGE)
 {
-    int HEIGHT;
-    HEIGHT = 10; //IMAGE.getSize();
-    cout << HEIGHT << endl;
+    unsigned int HEIGHT;
+    HEIGHT = 10;
+    sf::Vector2u Vector;
+    Vector = Image::getSize();
+    Vector(IMAGE);
     return HEIGHT;
 }
 
 
-int color_one_pixel(Image IMAGE, int x, int y)
+unsigned int color_one_pixel(Image IMAGE, unsigned int x, unsigned int y)
 {
-    IMAGE.getPixel(x, y);
+    sf::Color COLOR;
+    COLOR = IMAGE.getPixel(x, y);
     return 0;
 }
 
 
 int main()
 {
-    int HEIGHT;
-    int WIDTH;
-    const char *NAME_IMAGE = "image/coeur.jpg";
-    const char ASCII[] = {' ', '.', 'a'};
+    unsigned int HEIGHT, WIDTH;
+    const char *NAME_IMAGE = "image/coeur.jpg", ASCII[] = {'a', '.', ' '};
 
     sf::Image IMAGE;
-    sf::Texture IMAGE_LOADED;
-    sf::Sprite SPRITE_LOADED;
 
-    IMAGE_LOADED = open_image(NAME_IMAGE);
-    HEIGHT = receve_height_image(IMAGE_LOADED);
-    WIDTH = receve_width_image(NAME_IMAGE);
+    IMAGE = open_image(NAME_IMAGE);
+    HEIGHT = receve_height_image(IMAGE);
+    WIDTH = receve_width_image(IMAGE);
     //color_one_pixel(image_loaded);
 
-    for(int y = 0; y < HEIGHT; y ++)
+    for(unsigned int y = 0; y < HEIGHT; y ++)
     {
-        for(int x = 0; x < WIDTH; x ++)
+        for(unsigned int x = 0; x < WIDTH; x ++)
         {
             // appel fonction color et choix ascii
             // verifier si le x == WIDTH si oui faire le endl
