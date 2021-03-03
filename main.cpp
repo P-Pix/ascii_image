@@ -57,7 +57,7 @@ int main()
 
     for(int x = 0; x < 3; x ++)
     {
-        cout << "le " << x << " est '" << ASCII[x] << "' " << endl;
+        cout << "le " << x + 1 << " est '" << ASCII[x] << "' " << endl;
     }
 
     /**
