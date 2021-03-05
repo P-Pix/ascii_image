@@ -66,30 +66,46 @@ unsigned int color_one_pixel(Image IMAGE, unsigned int x, unsigned int y)
     return GRIS;
 }
 
-const char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
+char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
 {
     unsigned int NOMBRE_SIGNE_POSSIBLE;
-    const char NON_SIGNE_CHOISI = {' '};
+    char SIGNE_CHOISI = {'1'};
     NOMBRE_SIGNE_POSSIBLE = 255 / (sizeof(ASCII) / 4);
     for(unsigned int x = 0; x < sizeof(ASCII) / 4; x ++)
     {
-        if(NIVEAU_GRIS > NOMBRE_SIGNE_POSSIBLE * x)
+        if(255 != NIVEAU_GRIS)
         {
-            if(NIVEAU_GRIS <= NOMBRE_SIGNE_POSSIBLE * (x + 1))
+            if(0 != NIVEAU_GRIS)
             {
-                const char SIGNE_CHOISI = ASCII[x];
+                if(NOMBRE_SIGNE_POSSIBLE * x < NIVEAU_GRIS) 
+                {
+                    if(NIVEAU_GRIS <= NOMBRE_SIGNE_POSSIBLE * (x + 1))
+                    {
+                        SIGNE_CHOISI = ASCII[x];
+                        return SIGNE_CHOISI;
+                    }
+                }
+            }
+            else
+            {
+                SIGNE_CHOISI = ASCII[0];
                 return SIGNE_CHOISI;
             }
         }
+        else
+        {
+            SIGNE_CHOISI = ASCII[(sizeof(ASCII) / 4) - 1];
+            return SIGNE_CHOISI;
+        }
     }
-    return NON_SIGNE_CHOISI;
+    return SIGNE_CHOISI;
 }
 
 
 int main()
 {
     unsigned int HEIGHT, WIDTH, NIVEAU_GRIS, POURCENTAGE;
-    const char ASCII[] = {'.', ' '};
+    const char ASCII[] = {'#', ' '};
     string const NAME_FICHIER = "ASCII.txt";
 
     sf::Image IMAGE;
@@ -100,9 +116,9 @@ int main()
     **/
 
     unsigned int HAUT, LARGE;
-    const char *NAME_IMAGE = "image/coeur.jpg";
-    LARGE = 360;
-    HAUT = 360;
+    const char *NAME_IMAGE = "image/homer.jpg";
+    LARGE = 300;
+    HAUT = 300;
 
     /**
     *** A changer
@@ -117,7 +133,7 @@ int main()
         for(unsigned int x = 0; x < WIDTH; x ++)
         {
             NIVEAU_GRIS = color_one_pixel(IMAGE, x, y);
-            const char ASCII_SIGNE = choix_ascii(NIVEAU_GRIS, ASCII);
+            char ASCII_SIGNE = choix_ascii(NIVEAU_GRIS, ASCII);
             FICHIER << ASCII_SIGNE;
         }
         FICHIER << endl;
