@@ -49,9 +49,9 @@ unsigned int receve_height_image(Image IMAGE, unsigned int HAUT)
     return HEIGHT;
 }
 
-float pourcentage(unsigned int VALEUR_ACTUELLE, unsigned int VALEUR_FINALE)
+unsigned int pourcentage(unsigned int VALEUR_ACTUELLE, unsigned int VALEUR_FINALE)
 {
-    float RESULTAT;
+    unsigned int RESULTAT;
     RESULTAT = (VALEUR_ACTUELLE * 100) / VALEUR_FINALE;
     return RESULTAT;
 }
@@ -88,8 +88,7 @@ const char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
 
 int main()
 {
-    unsigned int HEIGHT, WIDTH, NIVEAU_GRIS;
-    float POURCENTAGE;
+    unsigned int HEIGHT, WIDTH, NIVEAU_GRIS, POURCENTAGE;
     const char ASCII[] = {'.', ' '};
     string const NAME_FICHIER = "ASCII.txt";
 
