@@ -1,10 +1,3 @@
-/** avec sfml recupérer une image 
-- la transformé en noir et blanc 
-- puis en fonction du niveau mettre un signe ascii
-- faire une liste des caractère des plus clair au plus sombre
-- signe choisi pour le pixel = ascii[niveau de gris]
-**/
-
 /**
 - vitesse moyenne = 32 400 pixels par seconde
 **/
@@ -26,8 +19,6 @@ sf::Image open_image(const char *NAME_IMAGE)
     }
     return IMAGE;
 }
-
-//recherche actuelle = obtenir le size de l'image
 
 unsigned int receve_width_image(Image IMAGE)
 {
@@ -118,36 +109,4 @@ int main()
     }
 
     return 0;
-
-    /**
-
-    sf::Sprite load_sprite(sf::Texture IMAGE)
-    {
-        sf::Sprite SPRITE;
-        SPRITE.setTexture(IMAGE);
-        return SPRITE;
-    }
-
-    sprite_loaded = load_sprite(image_loaded);
-
-    RenderWindow WINDOW(VideoMode(1080, 720), "My window");
-
-    WINDOW.setFramerateLimit(60);
-
-    while(WINDOW.isOpen())
-    {
-        Event event;
-        while(WINDOW.pollEvent(event))
-        {
-            if(event.type == Event::Closed)
-            {
-                WINDOW.close();
-            }
-        }
-        sprite_loaded.setTexture(image_loaded);
-        WINDOW.clear();
-        WINDOW.draw(sprite_loaded);
-        WINDOW.display();
-    }
-    **/
 }
