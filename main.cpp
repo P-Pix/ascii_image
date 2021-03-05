@@ -1,5 +1,10 @@
 /**
-- vitesse moyenne = 32 400 pixels par seconde
+*** Code developpe par Guillaume LEMONNIER
+*** Tous droits reserve
+**/
+
+/**
+- vitesse moyenne = 20 000 pixels par seconde
 **/
 
 #include <iostream>
@@ -20,10 +25,10 @@ sf::Image open_image(const char *NAME_IMAGE)
     return IMAGE;
 }
 
-unsigned int receve_width_image(Image IMAGE)
+unsigned int receve_width_image(Image IMAGE, unsigned int LARGE)
 {
     unsigned int WIDTH;
-    WIDTH = 360;
+    WIDTH = LARGE;
     /**
     sf::Vector2u Vector;
     Vector = Image::getSize();
@@ -32,10 +37,10 @@ unsigned int receve_width_image(Image IMAGE)
     return WIDTH;
 }
 
-unsigned int receve_height_image(Image IMAGE)
+unsigned int receve_height_image(Image IMAGE, unsigned int HAUT)
 {
     unsigned int HEIGHT;
-    HEIGHT = 360;
+    HEIGHT = HAUT;
     /**
     sf::Vector2u Vector;
     Vector = Image::getSize();
@@ -85,15 +90,28 @@ int main()
 {
     unsigned int HEIGHT, WIDTH, NIVEAU_GRIS;
     float POURCENTAGE;
-    const char *NAME_IMAGE = "image/coeur.jpg", ASCII[] = {'a', '.', ' '};
+    const char ASCII[] = {'.', ' '};
     string const NAME_FICHIER = "ASCII.txt";
 
     sf::Image IMAGE;
     ofstream FICHIER(NAME_FICHIER.c_str());
 
+    /**
+    *** A changer
+    **/
+
+    unsigned int HAUT, LARGE;
+    const char *NAME_IMAGE = "image/coeur.jpg";
+    LARGE = 360;
+    HAUT = 360;
+
+    /**
+    *** A changer
+    **/
+
     IMAGE = open_image(NAME_IMAGE);
-    HEIGHT = receve_height_image(IMAGE);
-    WIDTH = receve_width_image(IMAGE);
+    HEIGHT = receve_height_image(IMAGE, HAUT);
+    WIDTH = receve_width_image(IMAGE, LARGE);
 
     for(unsigned int y = 0; y < HEIGHT; y ++)
     {
@@ -104,7 +122,7 @@ int main()
             FICHIER << ASCII_SIGNE;
         }
         FICHIER << endl;
-        POURCENTAGE = pourcentage(y * y, HEIGHT * WIDTH);
+        POURCENTAGE = pourcentage(y, HEIGHT);
         cout << POURCENTAGE << " %" << endl;
     }
 
