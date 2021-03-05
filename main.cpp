@@ -73,24 +73,22 @@ char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
     NOMBRE_SIGNE_POSSIBLE = 255 / (sizeof(ASCII) / 4);
     for(unsigned int x = 0; x < sizeof(ASCII) / 4; x ++)
     {
-        if(255 != NIVEAU_GRIS)
+        if(255 != NIVEAU_GRIS && 0 != NIVEAU_GRIS)
         {
-            if(0 != NIVEAU_GRIS)
+
+            if(NOMBRE_SIGNE_POSSIBLE * x < NIVEAU_GRIS) 
             {
-                if(NOMBRE_SIGNE_POSSIBLE * x < NIVEAU_GRIS) 
+                if(NIVEAU_GRIS <= NOMBRE_SIGNE_POSSIBLE * (x + 1))
                 {
-                    if(NIVEAU_GRIS <= NOMBRE_SIGNE_POSSIBLE * (x + 1))
-                    {
-                        SIGNE_CHOISI = ASCII[x];
-                        return SIGNE_CHOISI;
-                    }
+                    SIGNE_CHOISI = ASCII[x];
+                    return SIGNE_CHOISI;
                 }
             }
-            else
-            {
-                SIGNE_CHOISI = ASCII[0];
-                return SIGNE_CHOISI;
-            }
+        }
+        else if(255 != NIVEAU_GRIS)
+        {
+            SIGNE_CHOISI = ASCII[0];
+            return SIGNE_CHOISI;
         }
         else
         {
