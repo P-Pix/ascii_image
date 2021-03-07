@@ -114,9 +114,9 @@ int main()
     **/
 
     unsigned int HAUT, LARGE;
-    const char *NAME_IMAGE = "image/homer.jpg";
-    LARGE = 300;
-    HAUT = 300;
+    const char *NAME_IMAGE = "image/coeur.jpg";
+    LARGE = 360;
+    HAUT = 360;
 
     /**
     *** A changer
