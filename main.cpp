@@ -103,7 +103,7 @@ char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
 int main()
 {
     unsigned int HEIGHT, WIDTH, NIVEAU_GRIS, POURCENTAGE;
-    const char ASCII[] = {'@', ' '};
+    const char ASCII[] = {'#', ' '};
     string const NAME_FICHIER = "ASCII.txt";
 
     sf::Image IMAGE;
