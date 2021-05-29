@@ -25,28 +25,14 @@ sf::Image open_image(const char *NAME_IMAGE)
     return IMAGE;
 }
 
-unsigned int receve_width_image(Image IMAGE, unsigned int LARGE)
+unsigned int receve_width_image(Image IMAGE)
 {
-    unsigned int WIDTH;
-    WIDTH = LARGE;
-    /**
-    sf::Vector2u Vector;
-    Vector = Image::getSize();
-    Vector(IMAGE);
-    **/
-    return WIDTH;
+    return IMAGE.getSize().x;
 }
 
-unsigned int receve_height_image(Image IMAGE, unsigned int HAUT)
+unsigned int receve_height_image(Image IMAGE)
 {
-    unsigned int HEIGHT;
-    HEIGHT = HAUT;
-    /**
-    sf::Vector2u Vector;
-    Vector = Image::getSize();
-    Vector(IMAGE);
-    **/
-    return HEIGHT;
+    return IMAGE.getSize().y;
 }
 
 unsigned int pourcentage(unsigned int VALEUR_ACTUELLE, unsigned int VALEUR_FINALE)
@@ -103,28 +89,16 @@ char choix_ascii(unsigned int NIVEAU_GRIS, const char *ASCII)
 int main()
 {
     unsigned int HEIGHT, WIDTH, NIVEAU_GRIS, POURCENTAGE;
+    const char *NAME_IMAGE = "image/paysage_2.jpg";
     const char ASCII[] = {'#', ' '};
     string const NAME_FICHIER = "ASCII.txt";
 
     sf::Image IMAGE;
     ofstream FICHIER(NAME_FICHIER.c_str());
 
-    /**
-    *** A changer
-    **/
-
-    unsigned int HAUT, LARGE;
-    const char *NAME_IMAGE = "image/paysage_2.jpg";
-    LARGE = 300;
-    HAUT = 300;
-
-    /**
-    *** A changer
-    **/
-
     IMAGE = open_image(NAME_IMAGE);
-    HEIGHT = receve_height_image(IMAGE, HAUT);
-    WIDTH = receve_width_image(IMAGE, LARGE);
+    HEIGHT = receve_height_image(IMAGE);
+    WIDTH = receve_width_image(IMAGE);
 
     for(unsigned int y = 0; y < HEIGHT; y ++)
     {
